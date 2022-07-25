@@ -302,64 +302,72 @@
         <!-- End Header -->
 
         <!-- Table -->
-        <div class="table-responsive">
-            <div id="datatable_wrapper" class="">
-                <table id="datatable"
-                    class="table table-borderless table-thead-bordered table-nowrap table-align-middle card-table dataTable no-footer"
-                    role="grid" aria-describedby="datatable_info">
-                    <thead class="thead-light">
-                        <tr role="row">
-                            <th scope="col" class="table-column-pe-0 sorting_disabled" rowspan="1" colspan="1"
-                                aria-label="" style="width: 75.4312px;">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="" id="datatableCheckAll">
-                                    <label class="form-check-label" for="datatableCheckAll"></label>
-                                </div>
-                            </th>
-                            <th class="table-column-ps-0 sorting_disabled" rowspan="1" colspan="1"
-                                aria-label="Full name" style="width: 406.219px;">Full name</th>
-                            <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1"
-                                aria-label="Type: activate to sort column ascending" style="width: 273px;">Email</th>
-                            <th class="sorting_disabled" rowspan="1" colspan="1" aria-label="Email"
-                                style="width: 298.444px;">created_at</th>
-                        </tr>
-                    </thead>
-
-                    <tbody>
-                        @foreach ($users as $user)
-                        <tr role="row" class="odd">
-                            <td class="table-column-pe-0">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="" id="usersDataCheck2">
-                                    <label class="form-check-label" for="usersDataCheck2"></label>
-                                </div>
-                            </td>
-                            <td class="table-column-ps-0">
-                                <a class="d-flex align-items-center" href="./user-profile.html">
-                                    <div class="flex-shrink-0">
-                                        <div class="avatar avatar-sm avatar-circle">
-                                            <img class="avatar-img" src="./assets/img/160x160/img10.jpg"
-                                                alt="Image Description">
-                                        </div>
-                                    </div>
-                                    <div class="flex-grow-1 ms-3">
-                                        <h5 class="text-inherit mb-0">{{$user->name}} <i
-                                                class="bi-patch-check-fill text-primary" data-bs-toggle="tooltip"
-                                                data-bs-placement="top" title="" data-bs-original-title="Top endorsed"
-                                                aria-label="Top endorsed"></i></h5>
-                                    </div>
-                                </a>
-                            </td>
-                            <td>
-                                {{$user->email}}
-                            </td>
-                            <td>{{$user->created_at->diffForHumans()}}</td>
-                        </tr>
-                        @endforeach
-                    </tbody>
-                </table>
+<!-- Basic Table -->
+<div class="table-responsive-md u-datatable">
+  <table class="js-datatable table">
+    <thead>
+      <tr class="text-uppercase font-size-14">
+        <th scope="col" class="font-weight-medium">
+          <div class="d-flex justify-content-between align-items-center">
+            Id
+            <div class="ml-2">
+              <span class="fa fa-angle-up u-datatable__thead-icon"></span>
+              <span class="fa fa-angle-down u-datatable__thead-icon"></span>
             </div>
-        </div>
+          </div>
+        </th>
+        <th scope="col" class="font-weight-medium">
+          <div class="d-flex justify-content-between align-items-center">
+            Full Name
+            <div class="ml-2">
+              <span class="fa fa-angle-up u-datatable__thead-icon"></span>
+              <span class="fa fa-angle-down u-datatable__thead-icon"></span>
+            </div>
+          </div>
+        </th>
+        <th scope="col" class="font-weight-medium">
+          <div class="d-flex justify-content-between align-items-center">
+            Email
+            <div class="ml-2">
+              <span class="fa fa-angle-up u-datatable__thead-icon"></span>
+              <span class="fa fa-angle-down u-datatable__thead-icon"></span>
+            </div>
+          </div>
+        </th>
+        <th scope="col" class="font-weight-medium">
+          <div class="d-flex justify-content-between align-items-center">
+            Date
+            <div class="ml-2">
+              <span class="fa fa-angle-up u-datatable__thead-icon"></span>
+              <span class="fa fa-angle-down u-datatable__thead-icon"></span>
+            </div>
+          </div>
+        </th>
+        <th scope="col" class="font-weight-medium">
+          <div class="d-flex justify-content-between align-items-center">
+            Status
+            <div class="ml-2">
+              <span class="fa fa-angle-up u-datatable__thead-icon"></span>
+              <span class="fa fa-angle-down u-datatable__thead-icon"></span>
+            </div>
+          </div>
+        </th>
+      </tr>
+    </thead>
+    <tbody class="font-size-14">
+      @foreach ($users as $user)
+      <tr>
+        <td class="align-middle text-secondary font-weight-normal">{{$user->id}}</td>
+        <td class="align-middle">{{$user->name}}</td>
+        <td class="align-middle text-primary">{{$user->email}}</td>
+        <td class="align-middle text-secondary">{{$user->created_at->diffForHumans()}}</td>
+        <td class="align-middle text-danger">Rejected</td>
+      </tr>
+      @endforeach
+    </tbody>
+  </table>
+</div>
+<!-- End Basic Table -->
         <!-- End Table -->
 
         <!-- Footer -->
@@ -388,4 +396,7 @@
     <!-- End Card -->
 
 </div>
+@endsection
+@section('scripts')
+<script src="{{asset('assets/js/hs.datatables.js')}}"></script>
 @endsection

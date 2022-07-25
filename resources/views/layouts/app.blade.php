@@ -1893,9 +1893,10 @@
   <!-- ========== END SECONDARY CONTENTS ========== -->
 
   <!-- JS Global Compulsory  -->
-  <script src="../assets/vendor/jquery/dist/jquery.min.js"></script>
+  {{-- <script src="../assets/vendor/jquery/dist/jquery.min.js"></script>
   <script src="../assets/vendor/jquery-migrate/dist/jquery-migrate.min.js"></script>
-  <script src="../assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script> --}}
+  <script src="{{ asset('js/app.js') }}" defer ></script>
 
   <!-- JS Implementing Plugins -->
   <script src="../assets/vendor/hs-navbar-vertical-aside/dist/hs-navbar-vertical-aside.min.js"></script>
@@ -1962,6 +1963,7 @@
   </script>
 
   <!-- End Style Switcher JS -->
+  @yield('scripts')
 </body>
 
 </html>
