@@ -1,4 +1,4 @@
-const mix = require('laravel-mix');
+const mix = require("laravel-mix");
 
 /*
  |--------------------------------------------------------------------------
@@ -11,6 +11,17 @@ const mix = require('laravel-mix');
  |
  */
 
-mix.js('resources/js/app.js', 'public/js').vue({ version: 2 })
-    .sass('resources/sass/app.scss', 'public/css')
+mix.js("resources/js/app.js", "public/js")
+    .vue({ version: 2 })
+    .sass("resources/sass/app.scss", "public/css")
     .sourceMaps();
+
+mix.scripts(
+    [
+        "node_modules/jquery/dist/jquery.min.js",
+        "node_modules/jquery-migrate/dist/jquery-migrate.min.js",
+        "public/assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js",
+    ],
+    "public/js/global.bundle.min.js",
+    "./"
+).sourceMaps();
