@@ -19,7 +19,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+          return view('users.index',['users' => User::paginate(5)]);
     }
 
     /**
@@ -61,7 +61,7 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(User $user)
     {
         //
     }
